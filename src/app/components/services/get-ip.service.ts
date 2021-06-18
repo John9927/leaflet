@@ -15,42 +15,42 @@ export class GetIpService {
   city = [
     {
       id: 0,
-      name: "all",
+      name: "All",
       coordLat: 42.68309728284572,
       coordLon: 13.37005477702912,
       zoom: 5
     },
     {
       id: 1,
-      name: "parma",
+      name: "Parma",
       coordLat: 44.80375013284164,
       coordLon: 10.315789541227566,
       zoom: 10
     },
     {
       id: 2,
-      name: "pescara",
+      name: "Pescara",
       coordLat: 42.45504140150499,
       coordLon: 14.209388716502607,
       zoom: 10
     },
     {
       id: 3,
-      name: "livorno",
+      name: "Livorno",
       coordLat: 43.54946955368824,
       coordLon: 10.311902132948411,
       zoom: 10
     },
     {
       id: 4,
-      name: "bari",
+      name: "Bari",
       coordLat: 41.121053356068565,
       coordLon: 16.867674789892508,
       zoom: 10
     },
     {
       id: 5,
-      name: "guglionesi",
+      name: "Guglionesi",
       coordLat: 41.91250221874158,
       coordLon: 14.920696768398148,
       zoom: 25

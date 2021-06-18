@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     } else {
       this.result = this.getIpService.city.filter(res => {
         this.boolean = false;
-        return String(res.name).startsWith(value)
+        return String(res.name).toLocaleLowerCase().startsWith(value)
       });
 
       if (this.result.length == 0) {
