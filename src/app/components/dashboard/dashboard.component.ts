@@ -52,4 +52,12 @@ export class DashboardComponent implements OnInit {
       this.getIpService.map.remove();
     }
   }
+
+  onClickIcon() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+     });
+  }
 }

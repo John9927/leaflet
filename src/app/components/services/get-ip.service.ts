@@ -25,28 +25,28 @@ export class GetIpService {
       name: "Parma",
       coordLat: 44.80375013284164,
       coordLon: 10.315789541227566,
-      zoom: 10
+      zoom: 15
     },
     {
       id: 2,
       name: "Pescara",
       coordLat: 42.45504140150499,
       coordLon: 14.209388716502607,
-      zoom: 10
+      zoom: 15
     },
     {
       id: 3,
       name: "Livorno",
       coordLat: 43.54946955368824,
       coordLon: 10.311902132948411,
-      zoom: 10
+      zoom: 15
     },
     {
       id: 4,
       name: "Bari",
       coordLat: 41.121053356068565,
       coordLon: 16.867674789892508,
-      zoom: 10
+      zoom: 15
     },
     {
       id: 5,
@@ -58,8 +58,8 @@ export class GetIpService {
   ]
 
   constructor() {
-    this.coordLat = 40;
-    this.coordLon = 30;
+    this.coordLat;
+    this.coordLon;
    }
 
   getCoords() {
@@ -82,12 +82,6 @@ export class GetIpService {
 
   initial() {
     this.variable = true;
-
-
-
-
-
-
     this.map = L.map('map', {
       center: [41.914181052830195, 14.916113448805161],
       zoom: 5
@@ -104,10 +98,5 @@ export class GetIpService {
     }
     )
     .addTo(this.map);
-  }
-
-
-  remove() {
-    this.map.remove()
   }
 }

@@ -74,6 +74,7 @@
   display: flex;
   height: 100vh;
   width: 100%;
+  z-index: 1;
 }
 
 #map {
@@ -81,14 +82,42 @@
   width: 100%;
 }
 
+.container__icon {
+  display: none;
+}
+
+
 @media screen and (max-width: 500px) {
   .container__main {
     flex-direction: column;
-    height: 150vh;
+    height: 100%;
   }
   .container__sidebar {
     width: 90%;
     margin: 0 auto;
     height: 400px;
+  }
+
+  .container__icon {
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    right: 0;
+    padding: 0px 10px 0px 0px;
+    z-index: 10;
+  }
+
+  .fa-arrow-up {
+    color: rgb(45, 176, 216);
+    background: rgb(73, 63, 214);
+    padding: 10px;
+    border-radius: 50%;
+  }
+
+  .icon {
+    display: flex;
   }
 }
