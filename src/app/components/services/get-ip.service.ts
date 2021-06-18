@@ -68,7 +68,7 @@ export class GetIpService {
       center: [this.coordLat, this.coordLon],
       zoom: this.zoom
     });
-    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png').addTo(this.map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
     L.marker([this.coordLat, this.coordLon], {
       icon: L.icon({
         iconSize: [25, 41],
