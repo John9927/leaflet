@@ -68,7 +68,7 @@ export class GetIpService {
       center: [this.coordLat, this.coordLon],
       zoom: this.zoom
     });
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
+    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png').addTo(this.map);
     L.marker([this.coordLat, this.coordLon], {
       icon: L.icon({
         iconSize: [25, 41],
@@ -92,7 +92,7 @@ export class GetIpService {
       center: [41.914181052830195, 14.916113448805161],
       zoom: 5
     });
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
+    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png').addTo(this.map);
     L.marker([41.914181052830195, 14.916113448805161], {
       icon: L.icon({
         iconSize: [25, 41],
