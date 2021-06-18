@@ -46,7 +46,7 @@ export class GetIpService {
       name: "Bari",
       coordLat: 41.121053356068565,
       coordLon: 16.867674789892508,
-      zoom: 15
+      zoom: 14
     },
     {
       id: 5,
@@ -100,3 +100,5 @@ export class GetIpService {
     .addTo(this.map);
   }
 }
+
+
