@@ -2,9 +2,10 @@
   <div class="container__sidebar">
     <span class="label">Book an appointment With your bank</span>
     <input type="text" class="input" placeholder="Filter by Name" (keyup)="onWrite(value.value)" #value>
-    <div class="container__items" *ngFor="let c of city">
+    <div class="container__items" *ngFor="let c of result">
       <span class="item" (click)="onClick(c.id, c.coordLat, c.coordLon, c.zoom)">{{c.name}}</span>
     </div>
+    <span class="item" *ngIf="boolean">Nessuna Città</span>
   </div>
   <div class="container__maps">
     <div id="map"></div>

@@ -12,6 +12,51 @@ export class GetIpService {
   variable = false;
   map: any;
 
+  city = [
+    {
+      id: 0,
+      name: "all",
+      coordLat: 42.68309728284572,
+      coordLon: 13.37005477702912,
+      zoom: 5
+    },
+    {
+      id: 1,
+      name: "parma",
+      coordLat: 44.80375013284164,
+      coordLon: 10.315789541227566,
+      zoom: 10
+    },
+    {
+      id: 2,
+      name: "pescara",
+      coordLat: 42.45504140150499,
+      coordLon: 14.209388716502607,
+      zoom: 10
+    },
+    {
+      id: 3,
+      name: "livorno",
+      coordLat: 43.54946955368824,
+      coordLon: 10.311902132948411,
+      zoom: 10
+    },
+    {
+      id: 4,
+      name: "bari",
+      coordLat: 41.121053356068565,
+      coordLon: 16.867674789892508,
+      zoom: 10
+    },
+    {
+      id: 5,
+      name: "guglionesi",
+      coordLat: 41.91250221874158,
+      coordLon: 14.920696768398148,
+      zoom: 25
+    },
+  ]
+
   constructor() {
     this.coordLat = 40;
     this.coordLon = 30;
