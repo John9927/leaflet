@@ -110,11 +110,21 @@
     z-index: 10;
   }
 
+  .container__datepicker {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+  }
+
   .fa-arrow-up {
     color: rgb(45, 176, 216);
     background: rgb(73, 63, 214);
     padding: 10px;
     border-radius: 50%;
+    width: 26px;
+    height: 26px;
   }
 
   .icon {

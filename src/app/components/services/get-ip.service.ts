@@ -5,12 +5,12 @@ import * as L from 'leaflet';
   providedIn: 'root'
 })
 export class GetIpService {
-  options: any;
   coordLon: any;
   coordLat: any;
   zoom: number;
   variable = false;
   map: any;
+  datepicker = false;
 
   city = [
     {
@@ -68,16 +68,8 @@ export class GetIpService {
       center: [this.coordLat, this.coordLon],
       zoom: this.zoom
     });
+    L.circleMarker([this.coordLat, this.coordLon]).addTo(this.map).on('click', () => this.onClickMarker());
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
-    L.marker([this.coordLat, this.coordLon], {
-      icon: L.icon({
-        iconSize: [25, 41],
-        iconAnchor: [13, 41],
-        iconRetinaUrl: './../../../assets/download.jfif',
-        iconUrl: './../../../assets/download.jfif',
-        shadowUrl: './marker-shadow.png',
-      })
-    }).addTo(this.map);
   }
 
   initial() {
@@ -87,17 +79,11 @@ export class GetIpService {
       zoom: 5
     });
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
-    L.marker([41.914181052830195, 14.916113448805161], {
-      icon: L.icon({
-        iconSize: [25, 41],
-        iconAnchor: [13, 41],
-        iconRetinaUrl: './../../../assets/download.jfif',
-        iconUrl: './../../../assets/download.jfif',
-        shadowUrl: './marker-shadow.png',
-      })
-    }
-    )
-    .addTo(this.map);
+    L.circleMarker([41.914181052830195, 14.916113448805161]).addTo(this.map).on('click', () => this.onClickMarker());
+  }
+
+  onClickMarker() {
+    this.datepicker = !this.datepicker;
   }
 }
 

@@ -10,6 +10,7 @@ import { GetIpService } from '../services/get-ip.service';
 export class DashboardComponent implements OnInit {
 
   constructor(public getIpService: GetIpService) { }
+  selected: Date | null;
 
   result;
   boolean = false;
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
     } else {
       this.result = this.getIpService.city.filter(res => {
         this.boolean = false;
-        return String(res.name).toLocaleLowerCase().startsWith(value)
+        return String(res.name).toLocaleLowerCase().startsWith(value.toLocaleLowerCase())
       });
 
       if (this.result.length == 0) {
