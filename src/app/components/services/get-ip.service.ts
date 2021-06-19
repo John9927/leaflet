@@ -57,10 +57,7 @@ export class GetIpService {
     },
   ]
 
-  constructor() {
-    this.coordLat;
-    this.coordLon;
-   }
+  constructor() { }
 
   getCoords() {
     this.variable = true;
@@ -68,8 +65,9 @@ export class GetIpService {
       center: [this.coordLat, this.coordLon],
       zoom: this.zoom
     });
-    L.circleMarker([this.coordLat, this.coordLon]).addTo(this.map).on('click', () => this.onClickMarker());
+    L.marker([this.coordLat, this.coordLon]).addTo(this.map).on('click', () => this.onClickMarker());
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
+
   }
 
   initial() {
@@ -79,7 +77,7 @@ export class GetIpService {
       zoom: 5
     });
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
-    L.circleMarker([41.914181052830195, 14.916113448805161]).addTo(this.map).on('click', () => this.onClickMarker());
+    L.marker([41.914181052830195, 14.916113448805161]).addTo(this.map).on('click', () => this.onClickMarker());
   }
 
   onClickMarker() {

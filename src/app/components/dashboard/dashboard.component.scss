@@ -2,6 +2,7 @@
   display: flex;
   width: 100%;
   height: 100vh;
+  position: relative;
   justify-content: space-between;
 }
 
@@ -64,7 +65,11 @@
   transition: 0.5s;
 
   &:hover {
-    background: linear-gradient(196deg, rgba(233,66,255,1) 0%, rgba(136,56,255,1) 87%);
+    background: linear-gradient(
+      196deg,
+      rgba(233, 66, 255, 1) 0%,
+      rgba(136, 56, 255, 1) 87%
+    );
     color: white;
     border: 2px solid rgb(233, 97, 7);
   }
@@ -86,6 +91,55 @@
   display: none;
 }
 
+.container__datepicker {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+}
+
+.datepicker {
+  z-index: 10;
+  width: 300px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+}
+
+.container__submit {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.items {
+  display: flex;
+  padding: 3px;
+  cursor: pointer;
+  border: 2px solid #777171;
+  width: 80px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: 0.5s;
+
+  &:hover {
+    background: linear-gradient(
+      196deg,
+      rgba(233, 66, 255, 1) 0%,
+      rgba(136, 56, 255, 1) 87%
+    );
+    color: white;
+    border: 2px solid rgb(233, 97, 7);
+  }
+}
 
 @media screen and (max-width: 500px) {
   .container__main {
@@ -108,14 +162,6 @@
     right: 0;
     padding: 0px 10px 0px 0px;
     z-index: 10;
-  }
-
-  .container__datepicker {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    height: 100vh;
   }
 
   .fa-arrow-up {

@@ -9,18 +9,26 @@
     </div>
     <span class="item" *ngIf="boolean">Nessuna Città</span>
   </div>
+  <!-- DatePicker -->
+  <div class="container__datepicker" *ngIf="getIpService.datepicker">
+    <div class="datepicker">
+      <mat-form-field appearance="fill">
+        <input matInput [matDatepicker]="dp3" disabled>
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+      <div class="container__submit">
+        <span class="items">Salva</span>
+        <span class="items">Annulla</span>
+      </div>
+    </div>
+  </div>
   <div class="container__maps">
     <div id="map"></div>
   </div>
 </div>
 
 <div class="container__icon">
-  <div class="icon"(click)="onClickIcon()" ><i class="fas fa-arrow-up"></i></div>
-</div>
-
-<div class="container__datepicker" style="display: flex;" *ngIf="getIpService.datepicker">
-  <mat-card class="demo-inline-calendar-card">
-    <mat-calendar (selectedChange)="selected = $event"></mat-calendar>
-  </mat-card>
-  <p>Selected date: {{selected}}</p>
+  <div class="icon" (click)="onClickIcon()"><i class="fas fa-arrow-up"></i></div>
 </div>
