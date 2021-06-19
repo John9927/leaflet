@@ -13,14 +13,15 @@
   <div class="container__datepicker" *ngIf="getIpService.datepicker">
     <div class="datepicker">
       <mat-form-field appearance="fill">
-        <input matInput [matDatepicker]="dp3" disabled>
-        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        <input matInput [matDatepicker]="picker" (dateInput)="addEvent('input', $event)"
+          (dateChange)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <div class="container__submit">
-        <span class="items">Salva</span>
-        <span class="items">Annulla</span>
+        <span class="items" (click)="onClickSalva(events[0])">Salva</span>
+        <span class="items" (click)="onClickAnnulla()">Annulla</span>
       </div>
     </div>
   </div>

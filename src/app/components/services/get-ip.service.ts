@@ -18,14 +18,16 @@ export class GetIpService {
       name: "All",
       coordLat: 42.68309728284572,
       coordLon: 13.37005477702912,
-      zoom: 5
+      zoom: 5,
+
     },
     {
       id: 1,
       name: "Parma",
       coordLat: 44.80375013284164,
       coordLon: 10.315789541227566,
-      zoom: 15
+      zoom: 15,
+      data: null
     },
     {
       id: 2,

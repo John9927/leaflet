@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { GetIpService } from '../services/get-ip.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { GetIpService } from '../services/get-ip.service';
 export class DashboardComponent implements OnInit {
 
   constructor(public getIpService: GetIpService) { }
-  selected: Date | null;
+
+  events: string[] = [];
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.events.push(`${event.value}`);
+  }
 
   result;
   boolean = false;
@@ -60,5 +65,15 @@ export class DashboardComponent implements OnInit {
       left: 0,
       behavior: 'smooth'
      });
+  }
+
+  onClickAnnulla() {
+    this.getIpService.datepicker = false;
+  }
+
+  onClickSalva(datepicker: any) {
+
+    console.log(datepicker);
+    // this.getIpService.datepicker = false;
   }
 }
