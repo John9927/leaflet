@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { GetIpService } from '../services/get-ip.service';
 
@@ -12,9 +12,13 @@ export class DashboardComponent implements OnInit {
 
   constructor(public getIpService: GetIpService) { }
 
-  events: string[] = [];
+  events: Date;
+  nameCity: string;
+  idCity: number;
+
+  @ViewChild('datepickeer') datepickeer: any;
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.events.push(`${event.value}`);
+    this.events = event.value;
   }
 
   result;
@@ -26,7 +30,7 @@ export class DashboardComponent implements OnInit {
     this.result = this.getIpService.city.filter(res => res.name);
     setTimeout(() => {
       this.getIpService.initial();
-    }, 10)
+    }, 10);
   }
 
   onWrite(value: any) {
@@ -45,11 +49,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  onClick(id: number, lat: any, lon: any, zoom: number) {
+  onClick(id: number, lat: any, lon: any, zoom: number, name: string) {
     this.initializingMap();
     this.getIpService.coordLat = lat;
     this.getIpService.coordLon = lon;
     this.getIpService.zoom = zoom;
+    this.nameCity = name;
+    this.idCity = id;
     this.getIpService.getCoords();
   }
 
@@ -64,7 +70,7 @@ export class DashboardComponent implements OnInit {
       top: 0,
       left: 0,
       behavior: 'smooth'
-     });
+    });
   }
 
   onClickAnnulla() {
@@ -72,8 +78,9 @@ export class DashboardComponent implements OnInit {
   }
 
   onClickSalva(datepicker: any) {
-
-    console.log(datepicker);
-    // this.getIpService.datepicker = false;
+    this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.idCity });
+    localStorage.getItem('datepicker');
+    localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
+    this.getIpService.datepicker = false;
   }
 }

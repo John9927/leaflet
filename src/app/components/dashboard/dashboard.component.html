@@ -4,16 +4,16 @@
     <input type="text" class="input" placeholder="Filter by Name" (keyup)="onWrite(value.value)" #value>
     <div class="wrap">
       <div class="container__items" *ngFor="let c of result">
-        <span class="item" (click)="onClick(c.id, c.coordLat, c.coordLon, c.zoom)">{{c.name}}</span>
+        <span class="item" (click)="onClick(c.id, c.coordLat, c.coordLon, c.zoom, c.name)">{{c.name}}</span>
       </div>
     </div>
     <span class="item" *ngIf="boolean">Nessuna Città</span>
   </div>
   <!-- DatePicker -->
   <div class="container__datepicker" *ngIf="getIpService.datepicker">
-    <div class="datepicker">
-      <mat-form-field appearance="fill">
-        <input matInput [matDatepicker]="picker" (dateInput)="addEvent('input', $event)"
+    <div class="datepicker" >
+      <mat-form-field appearance="fill" >
+        <input matInput [matDatepicker]="picker" #datepickeer (dateInput)="addEvent('input', $event)"
           (dateChange)="addEvent('change', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>

@@ -5,12 +5,14 @@ import * as L from 'leaflet';
   providedIn: 'root'
 })
 export class GetIpService {
-  coordLon: any;
-  coordLat: any;
+  coordLon: number;
+  coordLat: number;
   zoom: number;
-  variable = false;
+  variable: Boolean = false;
+  datepicker: Boolean = false;
   map: any;
-  datepicker = false;
+  // listDatepicker: [{ 'data': Date, 'Citta': string, 'Id': number }];
+  listDatepicker: any = [];
 
   city = [
     {
@@ -19,7 +21,6 @@ export class GetIpService {
       coordLat: 42.68309728284572,
       coordLon: 13.37005477702912,
       zoom: 5,
-
     },
     {
       id: 1,
