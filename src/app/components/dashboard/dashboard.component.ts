@@ -15,14 +15,17 @@ export class DashboardComponent implements OnInit {
   events: Date;
   nameCity: string;
   idCity: number;
+  name: string;
+  result;
+  boolean = false;
+  visibleSalva: Boolean = false;
 
   @ViewChild('datepickeer') datepickeer: any;
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events = event.value;
   }
 
-  result;
-  boolean = false;
+
 
   ngOnInit(): void {
     this.getIpService.variable = true;
@@ -77,9 +80,18 @@ export class DashboardComponent implements OnInit {
     this.getIpService.datepicker = false;
   }
 
-  onClickSalva(datepicker: any, name: string) {
-    this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.idCity, 'Name': name });
-    localStorage.getItem('datepicker');
+  getName(name) {
+    this.name = name;
+    if (this.name.length > 0) {
+      this.visibleSalva = true;
+    } else
+    this.visibleSalva = false;
+  }
+
+  onClickSalva(datepicker: any) {
+    this.getIpService.datepicker;
+    console.log(this.visibleSalva);
+    this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.idCity, 'Name': this.name });
     localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
     this.getIpService.datepicker = false;
   }

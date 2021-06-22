@@ -13,19 +13,19 @@
   <div class="container__datepicker" *ngIf="getIpService.datepicker">
 
     <div class="container__name datepicker">
-      <input type="text" placeholder="Insert Name" class="name" #name>
+      <input type="text" placeholder="Insert Name" class="name" #name (keyup)="getName(name.value)" required>
     </div>
 
     <div class="datepicker" >
       <mat-form-field appearance="fill" >
-        <input matInput [matDatepicker]="picker" #datepickeer (dateInput)="addEvent('input', $event)"
+        <input matInput [matDatepicker]="picker" #datepickeer (dateInput)="addEvent('input', $event)" required
           (dateChange)="addEvent('change', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <div class="container__submit">
-        <span class="items" (click)="onClickSalva(events[0], name.value)">Salva</span>
+          <button class="items" *ngIf="visibleSalva" (click)="onClickSalva(events[0])">Salva</button>
         <span class="items" (click)="onClickAnnulla()">Annulla</span>
       </div>
     </div>
