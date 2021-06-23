@@ -13,6 +13,7 @@ export class GetIpService {
   map: any;
   // listDatepicker: [{ 'data': Date, 'Citta': string, 'Id': number }];
   listDatepicker: any = [];
+  dataStorage;
 
   city = [
     {

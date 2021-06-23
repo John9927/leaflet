@@ -90,7 +90,9 @@ export class DashboardComponent implements OnInit {
 
   onClickSalva(datepicker: any) {
     this.getIpService.datepicker;
-    console.log(this.visibleSalva);
+    this.getIpService.dataStorage = localStorage.getItem('datepicker');
+    var data = JSON.parse(this.getIpService.dataStorage);
+    this.getIpService.listDatepicker = data;
     this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.idCity, 'Name': this.name });
     localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
     this.getIpService.datepicker = false;

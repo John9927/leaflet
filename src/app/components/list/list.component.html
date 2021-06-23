@@ -1,14 +1,16 @@
-<ul *ngFor="let d of datepicker">
-  <li> Data:
-    {{d.data | date}}
-  </li>
-  <li> Id:
-    {{d.Id}}
-  </li>
-  <li> Cittá:
-    {{d.Citta}}
-  </li>
-  <li> Nome Utente:
-    {{d.Name}}
-  </li>
-</ul>
+<div *ngFor="let d of datepicker">
+  <ul>
+    <li> Data:
+      {{d.data | date}}
+    </li>
+    <li> Id:
+      {{d.Id}}
+    </li>
+    <li> Cittá:
+      {{d.Citta}}
+    </li>
+    <li> Nome Utente:
+      {{d.Name}}
+    </li>
+  </ul>
+</div>
