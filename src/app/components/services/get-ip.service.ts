@@ -14,6 +14,7 @@ export class GetIpService {
   // listDatepicker: [{ 'data': Date, 'Citta': string, 'Id': number }];
   listDatepicker: any = [];
   dataStorage;
+  idNum: any = 0;
 
   city = [
     {
