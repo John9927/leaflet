@@ -10,9 +10,16 @@ export class ListComponent implements OnInit {
 
   constructor(public getIpService: GetIpService) { }
   datepicker: any = [];
+
   ngOnInit(): void {
-   this.datepicker = localStorage.getItem('datepicker');
-   this.datepicker = JSON.parse(this.datepicker);
+    this.datepicker = localStorage.getItem('datepicker');
+    this.datepicker = JSON.parse(this.datepicker);
   }
 
+  onClickDelete(id: number) {
+    var lists = this.datepicker.filter(res => {
+      return res.Id != id;
+    });
+    this.datepicker = lists;
+  }
 }

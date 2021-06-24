@@ -25,8 +25,6 @@ export class DashboardComponent implements OnInit {
     this.events = event.value;
   }
 
-
-
   ngOnInit(): void {
     this.getIpService.variable = true;
     this.initializingMap();
@@ -85,16 +83,23 @@ export class DashboardComponent implements OnInit {
     if (this.name.length > 0) {
       this.visibleSalva = true;
     } else
-    this.visibleSalva = false;
+      this.visibleSalva = false;
   }
 
   onClickSalva(datepicker: any) {
     this.getIpService.datepicker;
     this.getIpService.dataStorage = localStorage.getItem('datepicker');
     var data = JSON.parse(this.getIpService.dataStorage);
-    this.getIpService.listDatepicker = data;
-    this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.idCity, 'Name': this.name });
-    localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
+    // Se lo storage é vuoto allora non mettere nulla nell'array e fai il push
+    if (this.getIpService.dataStorage == null) {
+      this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.idCity, 'Name': this.name });
+      localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
+    } else {
+      // Altrimenti prendi il dato che sta nello storage e pusha il nuovo oggetto
+      this.getIpService.listDatepicker = data;
+      this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.idCity, 'Name': this.name });
+      localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
+    }
     this.getIpService.datepicker = false;
   }
 }
