@@ -16,6 +16,7 @@ export class GetIpService {
   dataStorage;
   idNum: any = 0;
 
+
   city = [
     {
       id: 0,
@@ -86,7 +87,8 @@ export class GetIpService {
   }
 
   onClickMarker() {
-    this.datepicker = !this.datepicker;
+    // this.datepicker = !this.datepicker;
+    this.datepicker = true;
   }
 }
 

@@ -17,9 +17,8 @@ export class ListComponent implements OnInit {
   }
 
   onClickDelete(id: number) {
-    var lists = this.datepicker.filter(res => {
-      return res.Id != id;
-    });
+    var lists = this.datepicker.filter(res => res.Id != id);
     this.datepicker = lists;
+    localStorage.setItem('datepicker', JSON.stringify(this.datepicker))
   }
 }

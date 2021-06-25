@@ -20,14 +20,12 @@ export class DashboardComponent implements OnInit {
   boolean = false;
   visibleSalva: Boolean = false;
 
-  @ViewChild('datepickeer') datepickeer: any;
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events = event.value;
   }
 
   ngOnInit(): void {
     this.getIpService.variable = true;
-
     var idNum = localStorage.getItem('idNum');
     this.getIpService.idNum = idNum;
     this.initializingMap();
@@ -90,13 +88,12 @@ export class DashboardComponent implements OnInit {
   }
 
   onClickSalva(datepicker: any) {
-    this.getIpService.datepicker;
     this.getIpService.dataStorage = localStorage.getItem('datepicker');
     var data = JSON.parse(this.getIpService.dataStorage);
     this.getIpService.idNum++;
-    localStorage.setItem('idNum', this.getIpService.idNum)
+    localStorage.setItem('idNum', this.getIpService.idNum);
     // Se lo storage é vuoto allora non mettere nulla nell'array e fai il push
-    if (this.getIpService.dataStorage == null) {
+    if (this.getIpService.dataStorage == null || this.getIpService.dataStorage == "") {
       this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.getIpService.idNum, 'Name': this.name });
       localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
     } else {
