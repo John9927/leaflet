@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "leaflet-fa4d1": {
+      "hosting": {
+        "leaflet": [
+          "leaflet-fa4d1"
+        ]
+      }
+    }
+  }
+}

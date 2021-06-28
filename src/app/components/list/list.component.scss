@@ -1,8 +1,36 @@
+.container__label {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.label__bank {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .main {
   display: grid;
   grid-template-columns: auto auto auto auto;
   row-gap: 20px;
   column-gap: 40px;
+}
+
+.container__icon {
+  margin-right: 13px;
+}
+
+.fa-arrow-left {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .container__list {

@@ -1,5 +1,6 @@
 import { GetIpService } from './../services/get-ip.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor(public getIpService: GetIpService) { }
+  constructor(public getIpService: GetIpService, private router: Router) { }
   datepicker: any = [];
 
   ngOnInit(): void {
@@ -20,5 +21,9 @@ export class ListComponent implements OnInit {
     var lists = this.datepicker.filter(res => res.Id != id);
     this.datepicker = lists;
     localStorage.setItem('datepicker', JSON.stringify(this.datepicker))
+  }
+
+  onClickArrow() {
+    this.router.navigateByUrl('');
   }
 }

@@ -1,9 +1,13 @@
 <div class="container__main">
   <div class="container__sidebar">
-    <span class="label">Book an appointment With your bank</span>
+    <span class="label">Book an appointment With your bank
+      <span (click)="onClickList()" class="container__list__icon">
+        <i class="fas fa-list"></i>
+      </span>
+    </span>
     <input type="text" class="input" placeholder="Filter by Name" (keyup)="onWrite(value.value)" #value>
     <div class="wrap">
-      <div class="container__items" *ngFor="let c of result">
+      <div class="container__items" *ngFor="let c of getIpService.filiali | async ">
         <span class="item" (click)="onClick(c.id, c.coordLat, c.coordLon, c.zoom, c.name)">{{c.name}}</span>
       </div>
     </div>

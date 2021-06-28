@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 import * as L from 'leaflet';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,59 +14,16 @@ export class GetIpService {
   variable: Boolean = false;
   datepicker: Boolean = false;
   map: any;
-  // listDatepicker: [{ 'data': Date, 'Citta': string, 'Id': number }];
   listDatepicker: any = [];
   dataStorage;
   idNum: any = 0;
+  filiali: any;
 
+  constructor(private db: AngularFireDatabase, private firestore: AngularFirestore) { }
 
-  city = [
-    {
-      id: 0,
-      name: "All",
-      coordLat: 42.68309728284572,
-      coordLon: 13.37005477702912,
-      zoom: 5,
-    },
-    {
-      id: 1,
-      name: "Parma",
-      coordLat: 44.80375013284164,
-      coordLon: 10.315789541227566,
-      zoom: 15,
-      data: null
-    },
-    {
-      id: 2,
-      name: "Pescara",
-      coordLat: 42.45504140150499,
-      coordLon: 14.209388716502607,
-      zoom: 15
-    },
-    {
-      id: 3,
-      name: "Livorno",
-      coordLat: 43.54946955368824,
-      coordLon: 10.311902132948411,
-      zoom: 15
-    },
-    {
-      id: 4,
-      name: "Bari",
-      coordLat: 41.121053356068565,
-      coordLon: 16.867674789892508,
-      zoom: 14
-    },
-    {
-      id: 5,
-      name: "Guglionesi",
-      coordLat: 41.91250221874158,
-      coordLon: 14.920696768398148,
-      zoom: 25
-    },
-  ]
-
-  constructor() { }
+  getFiliali() {
+    this.filiali = this.firestore.collection('filiali').valueChanges();
+  }
 
   getCoords() {
     this.variable = true;
@@ -87,8 +47,7 @@ export class GetIpService {
   }
 
   onClickMarker() {
-    // this.datepicker = !this.datepicker;
-    this.datepicker = true;
+    this.datepicker = !this.datepicker;
   }
 }
 
