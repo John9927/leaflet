@@ -15,11 +15,13 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ListComponent
+    ListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

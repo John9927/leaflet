@@ -12,8 +12,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class ListComponent implements OnInit {
 
   constructor(public getIpService: GetIpService, private router: Router, private firestore: AngularFirestore) { }
-  datepicker: any = [];
-  dataFiltrato: any = [];
+  datepicker: any;
+  dataFiltrato: any;
   dataPath: "data/";
   url = "data/";
   today: any;
@@ -26,7 +26,6 @@ export class ListComponent implements OnInit {
       mese = '0' + mese;
     }
     this.today = dataDaFormattare.getDate() + '/' + mese + '/' + dataDaFormattare.getFullYear();
-    console.log(this.today)
     this.getDatas();
     this.filterData();
   }
