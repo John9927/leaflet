@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import * as L from 'leaflet';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +20,7 @@ export class GetIpService {
   $id: any;
   data: any;
 
-  constructor(private db: AngularFireDatabase, private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { }
 
   getFiliali() {
     this.filiali = this.firestore.collection('filiali').valueChanges();
@@ -71,7 +69,6 @@ export class GetIpService {
       zoom: 5
     });
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
-    L.marker([41.914181052830195, 14.916113448805161]).addTo(this.map).on('click', () => this.onClickMarker());
   }
 
   onClickMarker() {

@@ -48,7 +48,6 @@ export class DashboardComponent implements OnInit {
     }, 10);
   }
 
-
   onWrite(value: any) {
     if (value.length == 0) {
       this.getIpService.getFiliali();
@@ -61,7 +60,6 @@ export class DashboardComponent implements OnInit {
 
   getCitta(value: string) {
     value = this.capitalizeFirstLetter(value);
-    console.log(value)
     const end = value.replace(
       /.$/, c => String.fromCharCode(c.charCodeAt(0) + 1),
     );

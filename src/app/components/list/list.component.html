@@ -3,7 +3,34 @@
     <span class="container__icon" (click)="onClickArrow()">
       <i class="fas fa-arrow-left"></i>
     </span>
-    Bank Appointments
+    Today Appointments {{today}}
+  </span>
+</div>
+
+<div class="main">
+  <div class="container__list" *ngFor="let d of dataFiltrato">
+    <ul class="list">
+      <li class="item">
+        <span class="label">Data: </span>
+        {{d.data}}
+      </li>
+      <li class="item">
+        <span class="label">Cittá: </span>
+        {{d?.Citta}}
+      </li>
+      <li class="item margin">
+        <span class="label">Nome:</span>
+        {{d.Name}}
+      </li>
+      <li class="item margin" style="justify-content: center; cursor: pointer;" (click)="onClickDelete(d.id)">X</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="container__label">
+  <span class="label__bank">
+    All Appointments
   </span>
 </div>
 
