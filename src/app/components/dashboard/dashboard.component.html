@@ -14,7 +14,8 @@
     <span class="item" *ngIf="boolean">Nessuna Città</span>
   </div>
   <!-- DatePicker -->
-  <div class="container__datepicker" [ngClass]="{'active': getIpService.datepicker === true, 'remove': getIpService.datepicker === false}">
+  <div class="container__datepicker"
+    [ngClass]="{'active': getIpService.datepicker === true, 'remove': getIpService.datepicker === false}">
     <div class="wrap__items">
       <div class="container__name margin">
         <input type="text" placeholder="Insert Name" class="name" #name (keyup)="getName(name.value)" required>
@@ -29,7 +30,7 @@
         </mat-form-field>
 
         <div class="container__submit">
-            <button class="items" *ngIf="visibleSalva" (click)="onClickSalva(events[0])">Salva</button>
+          <button class="items" *ngIf="visibleSalva" (click)="onClickSalva(events[0])">Salva</button>
           <span class="items" (click)="onClickAnnulla()">Annulla</span>
         </div>
       </div>

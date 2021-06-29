@@ -19,13 +19,14 @@ export class ListComponent implements OnInit {
     this.getDatas();
   }
 
-  getDatas(){
-    return this.getData().subscribe(data => this.datepicker = data.docs.map(e => {
-      return {
-       id: e.id,
-       ... e.data() as any
-      } as any;
-    }));
+  getDatas() {
+    return this.getData().subscribe(data =>
+      this.datepicker = data.docs.map(e => {
+        return {
+          id: e.id,
+          ...e.data() as any
+        } as any;
+      }));
   }
 
   onClickDelete(id: string) {
@@ -40,6 +41,6 @@ export class ListComponent implements OnInit {
   }
 
   getData() {
-   return this.firestore.collection('data').get();
+    return this.firestore.collection('data').get();
   }
 }

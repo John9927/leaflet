@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(public getIpService: GetIpService, private firestore: AngularFirestore, private router: Router) {}
+  constructor(public getIpService: GetIpService, private firestore: AngularFirestore, private router: Router) { }
 
   events: Date;
   nameCity: string;
@@ -21,12 +21,13 @@ export class DashboardComponent implements OnInit {
   visibleSalva: Boolean = false;
   movies: any[];
   data: any;
+  filiali: any;
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events = event.value;
     let dataDaFormattare = new Date(event.value);
     let mese: any = dataDaFormattare.getMonth() + 1;
-    if(mese < 10 ) {
+    if (mese < 10) {
       mese = '0' + mese;
     }
     this.data = dataDaFormattare.getDate() + '/' + mese + '/' + dataDaFormattare.getFullYear();
@@ -42,33 +43,34 @@ export class DashboardComponent implements OnInit {
     var idNum = localStorage.getItem('idNum');
     this.getIpService.idNum = idNum;
     this.initializingMap();
-    // this.result = this.filiali.subscribe(res => res.filter(res => res.name));
-
     setTimeout(() => {
       this.getIpService.initial();
     }, 10);
   }
 
+
   onWrite(value: any) {
     if (value.length == 0) {
-      console.log(value)
-      // this.getIpService.getFiliali();
-
+      this.getIpService.getFiliali();
       this.boolean = false;
-    } else {
-      console.log(value);
-      // this.filiali = this.filiali.subscribe(res => res.filter(res => String(res.name).toLocaleLowerCase().startsWith(value.toLocaleLowerCase())));
-      // this.filiali = this.filiali.subscribe(res => console.log(res.name) )
-      // this.result = this.filiali.subscribe(res => res.filter(res => {
-      //   this.boolean = false;
-      //   return String(res.name).toLocaleLowerCase().startsWith(value.toLocaleLowerCase());
-      // }))
+    } else if(value.length >= 1) {
+      this.getIpService.filiali = this.getCitta(value);
+      this.boolean = false;
     }
-    //  if (this.result.length == 0) {
-    //    this.boolean = true;
-    //  }
   }
 
+  getCitta(value: string) {
+    value = this.capitalizeFirstLetter(value);
+    console.log(value)
+    const end = value.replace(
+      /.$/, c => String.fromCharCode(c.charCodeAt(0) + 1),
+    );
+    return this.firestore.collection('filiali',ref => ref.where('name', '>=', value).where('name', '<', end)).valueChanges();
+  }
+
+  capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   onClick(id: number, lat: any, lon: any, zoom: number, name: string) {
     this.initializingMap();
@@ -112,7 +114,7 @@ export class DashboardComponent implements OnInit {
       this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity, 'Name': this.name });
     } else {
       // Altrimenti prendi il dato che sta nello storage e pusha il nuovo oggetto
-      this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity,  'Name': this.name });
+      this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity, 'Name': this.name });
     }
     this.getIpService.datepicker = false;
   }

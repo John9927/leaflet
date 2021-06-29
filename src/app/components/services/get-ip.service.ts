@@ -44,7 +44,6 @@ export class GetIpService {
           return { $id, ...this.data };
         });
       });
-
   }
 
   deleteDocument(url: string, id: string): Promise<any> {
