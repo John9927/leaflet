@@ -20,9 +20,16 @@ export class DashboardComponent implements OnInit {
   boolean = false;
   visibleSalva: Boolean = false;
   movies: any[];
+  data: any;
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events = event.value;
+    let dataDaFormattare = new Date(event.value);
+    let mese: any = dataDaFormattare.getMonth() + 1;
+    if(mese < 10 ) {
+      mese = '0' + mese;
+    }
+    this.data = dataDaFormattare.getDate() + '/' + mese + '/' + dataDaFormattare.getFullYear();
   }
 
   onClickList() {
@@ -100,19 +107,12 @@ export class DashboardComponent implements OnInit {
   }
 
   onClickSalva(datepicker: any) {
-    this.getIpService.dataStorage = localStorage.getItem('datepicker');
-    var data = JSON.parse(this.getIpService.dataStorage);
-    this.getIpService.idNum++;
-    localStorage.setItem('idNum', this.getIpService.idNum);
     // Se lo storage é vuoto allora non mettere nulla nell'array e fai il push
     if (this.getIpService.dataStorage == null || this.getIpService.dataStorage == "") {
-      this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.getIpService.idNum, 'Name': this.name });
-      localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
+      this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity, 'Name': this.name });
     } else {
       // Altrimenti prendi il dato che sta nello storage e pusha il nuovo oggetto
-      this.getIpService.listDatepicker = data;
-      this.getIpService.listDatepicker.push({ 'data': this.events, 'Citta': this.nameCity, 'Id': this.getIpService.idNum, 'Name': this.name });
-      localStorage.setItem('datepicker', JSON.stringify(this.getIpService.listDatepicker));
+      this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity,  'Name': this.name });
     }
     this.getIpService.datepicker = false;
   }
