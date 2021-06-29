@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import * as L from 'leaflet';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -18,11 +19,40 @@ export class GetIpService {
   dataStorage;
   idNum: any = 0;
   filiali: any;
+  $id: any;
+  data: any;
 
   constructor(private db: AngularFireDatabase, private firestore: AngularFirestore) { }
 
   getFiliali() {
     this.filiali = this.firestore.collection('filiali').valueChanges();
+  }
+
+  addData(dato: any) {
+    this.firestore.collection('data').add(dato);
+  }
+
+  getData() {
+    this.firestore
+      .collection('data')
+      .snapshotChanges()
+      .subscribe(newspapers => {
+        return newspapers.map(newspaper => {
+          const $id = newspaper.payload.doc.id;
+          this.$id = $id;
+          this.data = newspaper.payload.doc.data() as any;
+          return { $id, ...this.data };
+        });
+      });
+
+  }
+
+  deleteDocument(url: string, id: string): Promise<any> {
+    return this.getDocumentRef(`${url}${id}`).delete();
+  }
+
+  getDocumentRef(path: string): AngularFirestoreDocument {
+    return this.firestore.doc(path);
   }
 
   getCoords() {
@@ -33,7 +63,6 @@ export class GetIpService {
     });
     L.marker([this.coordLat, this.coordLon]).addTo(this.map).on('click', () => this.onClickMarker());
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
-
   }
 
   initial() {

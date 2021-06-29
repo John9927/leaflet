@@ -12,7 +12,7 @@
     <ul class="list">
       <li class="item">
         <span class="label">Data: </span>
-        {{d.data | date}}
+        {{d.data}}
       </li>
       <li class="item">
         <span class="label">Cittá: </span>
@@ -22,7 +22,7 @@
         <span class="label">Nome:</span>
         {{d.Name}}
       </li>
-      <li class="item margin" style="justify-content: center; cursor: pointer;" (click)="onClickDelete(d.Id)">X</li>
+      <li class="item margin" style="justify-content: center; cursor: pointer;" (click)="onClickDelete(d.id)">X</li>
     </ul>
   </div>
 </div>
