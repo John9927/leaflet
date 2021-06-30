@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import * as L from 'leaflet';
 
@@ -72,7 +71,7 @@ export class GetIpService {
   }
 
   onClickMarker() {
-    this.datepicker = !this.datepicker;
+    this.datepicker = true;
   }
 }
 

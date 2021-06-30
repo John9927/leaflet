@@ -58,7 +58,7 @@ export class ListComponent implements OnInit {
   }
 
   onClickArrow() {
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('dashboard');
   }
 
   getData() {

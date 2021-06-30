@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { GetIpService } from '../services/get-ip.service';
 import { AngularFirestore } from '@angular/fire/firestore';

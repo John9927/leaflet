@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,8 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatNativeDateModule,
     MatFormFieldModule,
