@@ -1,26 +1,24 @@
 import { GetIpService } from './../services/get-ip.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
-export class LoginComponent implements OnInit {
-
-  constructor(private fb: FormBuilder, private router: Router, public getIpService: GetIpService) { }
-
+export class RegistrationComponent implements OnInit {
   errors: Boolean = false;
+
+  constructor(private fb: FormBuilder, private router: Router, private getIpService: GetIpService) { }
 
   profileForm = this.fb.group({
     email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     password: ['', [Validators.minLength(6), Validators.required]],
   });
 
-  ngOnInit() {
-    this.getIpService.login = true;
+  ngOnInit(): void {
   }
 
   onClick(email: string, password: string) {
@@ -33,11 +31,9 @@ export class LoginComponent implements OnInit {
      }
   }
 
-  onClickSignUp() {
-    this.getIpService.registration = true;
-    this.getIpService.login = false;
+  onClickSignIn() {
+    this.getIpService.registration = false;
+    this.getIpService.login = true;
   }
-
-
 
 }

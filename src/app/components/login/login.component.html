@@ -1,9 +1,9 @@
 <div class="limiter">
   <div class="container-login100" style="background-image: url('./../../../assets/images/bg-01.jpg');">
     <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-      <form class="login100-form validate-form flex-sb flex-w" [formGroup]="profileForm">
+      <form *ngIf="getIpService.login" class="login100-form validate-form flex-sb flex-w" [formGroup]="profileForm">
         <span class="login100-form-title p-b-53">
-          Sign In With
+          Sign In
         </span>
         <div style="display: flex; width: 100%; justify-content: space-between;">
           <a href="#" class="btn-face m-b-20">
@@ -17,46 +17,60 @@
           </a>
         </div>
 
-        <div class="p-t-31 p-b-9">
-          <span class="txt1">
-            Username
-          </span>
-        </div>
-        <div class="wrap-input100 validate-input" data-validate="Username is required">
-          <input class="input100" type="text" name="username" #username>
-          <span class="focus-input100"></span>
+        <div style="display: flex; width: 100%; flex-direction: column">
+          <div class="p-t-31 p-b-9 container__label">
+            <span class="txt1">
+              Username *
+            </span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Email is required">
+            <input class="input100" type="text" name="email" formControlName="email" #email>
+            <span class="focus-input100"></span>
+          </div>
+          <span *ngIf="profileForm.controls.email.errors?.pattern && profileForm.controls.email.touched">Email
+            non
+            corretta</span>
+
+          <div class="p-t-13 p-b-9 container__label">
+            <span class="txt1">
+              Password *
+            </span>
+
+            <a href="#" class="txt2 bo1 m-l-5">
+              Forgot?
+            </a>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <input class="input100" type="password" formControlName="password" name="pass" #password>
+            <span class="focus-input100"></span>
+          </div>
+          <span
+            *ngIf="profileForm.controls.password?.errors?.required && profileForm.controls.password.touched">Inserire
+            Password</span>
+          <span
+            *ngIf="profileForm.controls.password?.errors?.minlength && profileForm.controls.password.touched">Password
+            Troppo Corta (min 6 caratteri)</span>
         </div>
 
-        <div class="p-t-13 p-b-9">
-          <span class="txt1">
-            Password
-          </span>
-
-          <a href="#" class="txt2 bo1 m-l-5">
-            Forgot?
-          </a>
-        </div>
-        <div class="wrap-input100 validate-input" data-validate="Password is required">
-          <input class="input100" type="password" name="pass" #password>
-          <span class="focus-input100"></span>
-        </div>
-
+        <span *ngIf="errors">Errore</span>
         <div class="container-login100-form-btn m-t-17">
-          <button class="login100-form-btn" (click)="onClick($event)">
+          <button class="login100-form-btn" (click)="onClick(email.value, password.value)">
             Sign In
           </button>
         </div>
 
         <div class="w-full text-center p-t-55">
           <span class="txt2">
-            Not a member?
+            Are you a member?
           </span>
 
-          <a href="#" class="txt2 bo1">
-            Sign up now
+          <a href="#" class="txt2 bo1" (click)="onClickSignUp()">
+            Sign Up Now
           </a>
         </div>
       </form>
+      <!-- Registration -->
+      <app-registration *ngIf="getIpService.registration"></app-registration>
     </div>
   </div>
 </div>

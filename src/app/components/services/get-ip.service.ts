@@ -19,6 +19,14 @@ export class GetIpService {
   $id: any;
   data: any;
 
+
+  // Login
+  email: string;
+  password: string;
+
+  login: Boolean = false;
+  registration: Boolean = false;
+
   constructor(private firestore: AngularFirestore) { }
 
   getFiliali() {
