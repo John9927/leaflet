@@ -21,9 +21,6 @@ export class GetIpService {
 
 
   // Login
-  email: string;
-  password: string;
-
   login: Boolean = false;
   registration: Boolean = false;
 

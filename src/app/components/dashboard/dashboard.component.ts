@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 
 import { Component, OnInit } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(public getIpService: GetIpService, private firestore: AngularFirestore, private router: Router) { }
+  constructor(private authService: AuthService, public getIpService: GetIpService, private firestore: AngularFirestore, private router: Router) { }
 
   events: Date;
   nameCity: string;
@@ -22,6 +23,7 @@ export class DashboardComponent implements OnInit {
   movies: any[];
   data: any;
   filiali: any;
+  isLogout;
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events = event.value;
@@ -115,5 +117,11 @@ export class DashboardComponent implements OnInit {
       this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity, 'Name': this.name });
     }
     this.getIpService.datepicker = false;
+  }
+
+  logout() {
+    this.authService.logout();
+    console.log("salve")
+    // this.isLogout.emit();
   }
 }

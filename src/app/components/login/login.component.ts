@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { GetIpService } from './../services/get-ip.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private router: Router, public getIpService: GetIpService) { }
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, public getIpService: GetIpService) { }
 
   errors: Boolean = false;
 
@@ -23,21 +24,19 @@ export class LoginComponent implements OnInit {
     this.getIpService.login = true;
   }
 
-  onClick(email: string, password: string) {
-     if(this.profileForm.controls.password?.errors?.required || this.profileForm.controls.password?.errors?.minlength) {
+  async onClick(email: string, password: string) {
+    if (this.profileForm.controls.password?.errors?.required || this.profileForm.controls.password?.errors?.minlength) {
       this.errors = true;
-     } else {
-      this.getIpService.email = email;
-      this.getIpService.password = password;
-      console.log("Email: ", email, "Password: ", password);
-     }
+    } else {
+      await this.authService.signin(email, password)
+      if (this.authService.isLoggedIn) {
+      }
+    }
   }
 
   onClickSignUp() {
     this.getIpService.registration = true;
     this.getIpService.login = false;
   }
-
-
 
 }

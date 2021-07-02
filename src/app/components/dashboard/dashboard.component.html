@@ -12,30 +12,37 @@
       </div>
     </div>
     <span class="item" *ngIf="boolean">Nessuna Città</span>
+
+    <div class="container__button" (click)="logout()">
+      <button class="button">Logout</button>
+    </div>
   </div>
   <!-- DatePicker -->
-  <div class="container__datepicker"
-    [ngClass]="{'active': getIpService.datepicker === true, 'remove': getIpService.datepicker === false}">
-    <div class="wrap__items">
-      <div class="container__name margin">
-        <input type="text" placeholder="Insert Name" class="name" #name (keyup)="getName(name.value)" required>
-      </div>
-
-      <div class="datepicker">
-        <mat-form-field appearance="fill" style="zoom: 66%; width: 79%;">
-          <input matInput [matDatepicker]="picker" (dateInput)="addEvent('input', $event)" required
-            (dateChange)="addEvent('change', $event)">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-        <div class="container__submit">
-          <button class="items" *ngIf="visibleSalva" (click)="onClickSalva(events[0])">Salva</button>
-          <span class="items" (click)="onClickAnnulla()">Annulla</span>
+  <div class="wrap__datepicker">
+    <div class="container__datepicker"
+      [ngClass]="{'active': getIpService.datepicker === true, 'remove': getIpService.datepicker === false}">
+      <div class="wrap__items">
+        <div class="container__name margin">
+          <input type="text" placeholder="Insert Name" class="name" #name (keyup)="getName(name.value)" required>
+        </div>
+  
+        <div class="datepicker">
+          <mat-form-field appearance="fill" style="zoom: 66%; width: 79%;">
+            <input matInput [matDatepicker]="picker" (dateInput)="addEvent('input', $event)" required
+              (dateChange)="addEvent('change', $event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+  
+          <div class="container__submit">
+            <button class="items" *ngIf="visibleSalva" (click)="onClickSalva(events[0])">Salva</button>
+            <span class="items" (click)="onClickAnnulla()">Annulla</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="container__maps">
     <div id="map"></div>
   </div>
