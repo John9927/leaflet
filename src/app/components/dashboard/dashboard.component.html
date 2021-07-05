@@ -1,5 +1,5 @@
 <div class="container__main">
-  <div class="container__sidebar">
+  <div class="container__sidebar" >
     <span class="label">Book an appointment With your bank
       <span (click)="onClickList()" class="container__list__icon">
         <i class="fas fa-list"></i>
@@ -16,6 +16,16 @@
     <div class="container__button" (click)="logout()">
       <button class="button">Logout</button>
     </div>
+    <div class="close__sidebar" [ngClass]="{'remove__sidebar': closeIcon === true, 'active__sidebar': closeIcon === false}">
+      <div class="container__close__icon" (click)="onClickClose()">
+        <span *ngIf="closeIcon == true">
+          <i class="fas fa-arrow-circle-right"></i>
+        </span>
+        <span *ngIf="closeIcon == false">
+          <i class="fas fa-arrow-circle-left"></i>
+        </span>
+      </div>
+    </div>
   </div>
   <!-- DatePicker -->
   <div class="wrap__datepicker">
@@ -25,7 +35,7 @@
         <div class="container__name margin">
           <input type="text" placeholder="Insert Name" class="name" #name (keyup)="getName(name.value)" required>
         </div>
-  
+
         <div class="datepicker">
           <mat-form-field appearance="fill" style="zoom: 66%; width: 79%;">
             <input matInput [matDatepicker]="picker" (dateInput)="addEvent('input', $event)" required
@@ -33,7 +43,7 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-  
+
           <div class="container__submit">
             <button class="items" *ngIf="visibleSalva" (click)="onClickSalva(events[0])">Salva</button>
             <span class="items" (click)="onClickAnnulla()">Annulla</span>
@@ -43,8 +53,8 @@
     </div>
   </div>
 
-  <div class="container__maps">
-    <div id="map"></div>
+  <div class="container__maps" [ngClass]="{'left__maps': closeIcon === true, 'right__maps': closeIcon === false}">
+    <div id="map" [ngClass]="{'width': closeIcon === true, 'right__maps': closeIcon === false}"></div>
   </div>
 </div>
 

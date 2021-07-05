@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   movies: any[];
   data: any;
   filiali: any;
+  closeIcon: Boolean = false;
   isLogout;
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
@@ -100,7 +101,7 @@ export class DashboardComponent implements OnInit {
     this.getIpService.datepicker = false;
   }
 
-  getName(name) {
+  getName(name: string) {
     this.name = name;
     if (this.name.length > 0) {
       this.visibleSalva = true;
@@ -121,7 +122,10 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    console.log("salve")
-    // this.isLogout.emit();
+  }
+
+
+  onClickClose() {
+    this.closeIcon = !this.closeIcon;
   }
 }

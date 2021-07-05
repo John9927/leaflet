@@ -7,11 +7,55 @@
 }
 
 .container__sidebar {
-  width: 17rem;
+  width: 250px;
   flex-direction: column;
   align-items: center;
   display: flex;
   padding: 15px 0px 0px 0px;
+  position: relative;
+  background: white;
+  transition: 0.5s ease-in-out;
+}
+
+.remove__sidebar {
+  margin-left: -255px !important;
+}
+
+.active__sidebar { }
+
+.left__maps {
+  transform: translate(-170px, 0%);
+  width: 100vw !important;
+}
+
+.width {
+  width: 100vw !important;
+}
+
+.right__maps {
+  transform: translate(0%, 0%);
+}
+
+.close__sidebar {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 95%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-left: 35px;
+  transition: 0.5s ease-in-out;
+}
+
+.container__close__icon {
+  z-index: 10;
+}
+
+.fa-arrow-circle-left,
+.fa-arrow-circle-right {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
 }
 
 .container__button {
@@ -19,6 +63,7 @@
   width: 100%;
   justify-content: center;
   height: auto;
+  z-index: 1;
 }
 
 .button {
@@ -63,6 +108,7 @@
   width: 100%;
   justify-content: center;
   margin: 10px 0px 0px -10px;
+  z-index: 1;
 }
 
 .wrap {
@@ -70,6 +116,7 @@
   flex-direction: column;
   width: 100%;
   overflow: auto;
+  z-index: 1;
 }
 
 .container__items {
@@ -113,6 +160,7 @@
   height: 100vh;
   width: 100%;
   z-index: 1;
+  transition: 0.5s ease-in-out;
 }
 
 #map {
@@ -138,7 +186,6 @@
   height: 100vh;
   transform: translate(0%, 0%) scale(1);
   transition: transform 300ms;
-  
 }
 
 .container__datepicker.remove {
@@ -271,5 +318,9 @@
 
   .icon {
     display: flex;
+  }
+
+  .close__sidebar {
+    display: none;
   }
 }
