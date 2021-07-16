@@ -1,5 +1,5 @@
 <div class="container__main">
-  <div class="container__sidebar" >
+  <div class="container__sidebar">
     <span class="label">Book an appointment With your bank
       <span (click)="onClickList()" class="container__list__icon">
         <i class="fas fa-list"></i>
@@ -16,7 +16,8 @@
     <div class="container__button" (click)="logout()">
       <button class="button">Logout</button>
     </div>
-    <div class="close__sidebar" [ngClass]="{'remove__sidebar': closeIcon === true, 'active__sidebar': closeIcon === false}">
+    <div class="close__sidebar"
+      [ngClass]="{'remove__sidebar': closeIcon === true, 'active__sidebar': closeIcon === false}">
       <div class="container__close__icon" (click)="onClickClose()">
         <span *ngIf="closeIcon == true">
           <i class="fas fa-arrow-circle-right"></i>
@@ -60,4 +61,21 @@
 
 <div class="container__icon">
   <div class="icon" (click)="onClickIcon()"><i class="fas fa-arrow-up"></i></div>
+</div>
+
+
+<div class="container__success__data" *ngIf=getIpService.success>
+  <div class="success">
+    <div class="top__success">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="bottom__success">
+      <span class="label__success">Great!</span>
+    </div>
+    <span class="success__label">Your data has been successfully saved</span>
+
+    <button class="button__modal" (click)="onClickCloseModal()">
+      <span class="modal__close">CLOSE</span>
+    </button>
+  </div>
 </div>

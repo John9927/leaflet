@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
     if (value.length == 0) {
       this.getIpService.getFiliali();
       this.boolean = false;
-    } else if(value.length >= 1) {
+    } else if (value.length >= 1) {
       this.getIpService.filiali = this.getCitta(value);
       this.boolean = false;
     }
@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
     const end = value.replace(
       /.$/, c => String.fromCharCode(c.charCodeAt(0) + 1),
     );
-    return this.firestore.collection('filiali',ref => ref.where('name', '>=', value).where('name', '<', end)).valueChanges();
+    return this.firestore.collection('filiali', ref => ref.where('name', '>=', value).where('name', '<', end)).valueChanges();
   }
 
   capitalizeFirstLetter(string: string) {
@@ -110,13 +110,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onClickSalva(datepicker: any) {
-    // Se lo storage é vuoto allora non mettere nulla nell'array e fai il push
-    if (this.getIpService.dataStorage == null || this.getIpService.dataStorage == "") {
-      this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity, 'Name': this.name });
-    } else {
-      // Altrimenti prendi il dato che sta nello storage e pusha il nuovo oggetto
-      this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity, 'Name': this.name });
-    }
+    this.getIpService.addData({ 'data': this.data, 'Citta': this.nameCity, 'Name': this.name });
     this.getIpService.datepicker = false;
   }
 
@@ -127,5 +121,9 @@ export class DashboardComponent implements OnInit {
 
   onClickClose() {
     this.closeIcon = !this.closeIcon;
+  }
+
+  onClickCloseModal() {
+    this.getIpService.success = false;
   }
 }

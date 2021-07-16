@@ -13,6 +13,8 @@ export class GetIpService {
   datepicker: Boolean = false;
   map: any;
   listDatepicker: any = [];
+  success: Boolean = false;
+  error: Boolean = false;
   dataStorage;
   idNum: any = 0;
   filiali: any;
@@ -31,7 +33,12 @@ export class GetIpService {
   }
 
   addData(dato: any) {
-    this.firestore.collection('data').add(dato);
+    this.firestore.collection('data').add(dato).then(() => {
+      console.log("Dato creato correttamente");
+      this.success = true;
+    }).catch((error) => {
+      console.log("Errore nel creare il dato",error)
+    });   
   }
 
   getData() {
